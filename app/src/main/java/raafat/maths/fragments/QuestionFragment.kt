@@ -1,6 +1,7 @@
 package raafat.maths.fragments
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ import raafat.maths.databinding.FragmentQuestionBinding
 class QuestionFragment : Fragment() {
 
 
+
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,16 +34,39 @@ class QuestionFragment : Fragment() {
             false
         )
 
+        // QuestionTitle TypeWriter Animation
         val animationText: TypeWriterTextView = binding.questionTitle
         animationText.setCharacterDelay(90)
         animationText.displayTextWithAnimation(getString(R.string.question_title_3))
-        val typeface = ResourcesCompat.getFont(requireContext(), R.font.google)
+        val typeface = ResourcesCompat.getFont(requireContext(), R.font.muhammadi)
         animationText.typeface = typeface
 
-        val question:TextView = binding.question
-
+        // Question is visible after few seconds
+        val question: TextView = binding.question
         Handler().postDelayed({
             question.visibility = View.VISIBLE
+
+            object : CountDownTimer(20000, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    binding.countdown.text = (millisUntilFinished / 1000).toString()
+                    binding.progressBar.progress = (millisUntilFinished /1000).toInt() * 5
+                }
+
+                override fun onFinish() {
+                    binding.countdown.text = "0"
+                    binding.progressBar.progress = 0
+                    Snackbar.make(
+                        binding.linearLayout,
+                        R.string.wrong_label,
+                        Snackbar.LENGTH_INDEFINITE
+                    )
+                        .setAction(R.string.new_game) {
+                            // Responds to click on the action
+                        }
+                        .show()
+                }
+            }.start()
+
         }, 7000)
 
 
@@ -100,7 +125,7 @@ class QuestionFragment : Fragment() {
 
                 val estimated = binding.answer.text.toString()
                 var questionText = binding.question.text.toString()
-                questionText = questionText.replace(Regex("""[$,÷]"""), "-")
+                questionText = questionText.replace(Regex("""[$,/]"""), "-")
                 questionText = questionText.replace(Regex("""[$,×]"""), "+")
                 val expression = Expression(questionText)
 
@@ -120,7 +145,7 @@ class QuestionFragment : Fragment() {
                         R.string.wrong_label,
                         Snackbar.LENGTH_INDEFINITE
                     )
-                        .setAction(R.string.try_again) {
+                        .setAction(R.string.new_game) {
                             // Responds to click on the action
                         }
                         .show()
@@ -130,5 +155,6 @@ class QuestionFragment : Fragment() {
 
         return binding.root
     }
+
 
 }

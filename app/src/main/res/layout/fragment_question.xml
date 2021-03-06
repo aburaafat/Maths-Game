@@ -17,24 +17,23 @@
             android:id="@+id/question_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_margin="8dp"
             android:gravity="center_horizontal"
             android:text="@string/question_title_3"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="26sp"/>
+            android:textSize="28sp"/>
 
         <TextView
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="26dp"
+            android:layout_margin="16dp"
             android:ellipsize="none"
             android:fontFamily="@font/google"
             android:gravity="center_horizontal"
             android:singleLine="true"
-            android:textSize="25sp"
+            android:textSize="22sp"
             android:text="@string/prob1"
             android:visibility="invisible"
             android:textAlignment="center"

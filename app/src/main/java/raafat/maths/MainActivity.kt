@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 
-@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
 
