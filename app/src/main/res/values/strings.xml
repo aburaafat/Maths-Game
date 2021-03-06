@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Geniuses</string>
+    <string name="title_name">قدرات ذهنية</string>
+    <string name="btn_start">start</string>
+    <string name="question_title_1">حل المسألة الآتية</string>
+    <string name="question_title_2">إذا ألغينا الأقواس كم تصبح النتيجة</string>
+    <string name="question_title_3">If ( × ) means ( + ) and ( ÷ ) means ( - ) solve the problem</string>
+    <string name="relaxed">20 s</string>
+    <string name="hard">15 s</string>
+    <string name="prob1">500÷500+500×400+100</string>
+    <string name="correct_label">Correct ✔</string>
+    <string name="play_again">Play Again</string>
+    <string name="wrong_label">Oops ❌</string>
+    <string name="try_again">Try again</string>
+</resources>

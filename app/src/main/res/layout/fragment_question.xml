@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical"
+        android:id="@+id/linear_layout"
+        tools:context=".fragments.QuestionFragment">
+
+
+        <raafat.maths.TypeWriterTextView
+            android:id="@+id/question_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_horizontal"
+            android:text="@string/question_title_3"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="26sp"/>
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="26dp"
+            android:ellipsize="none"
+            android:fontFamily="@font/google"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:textSize="25sp"
+            android:text="@string/prob1"
+            android:visibility="invisible"
+            android:textAlignment="center"
+            android:textColor="@color/ember"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="2dp"
+                android:layout_weight="3">
+
+                <TextView
+                    android:id="@+id/countdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="9dp"
+                    android:ellipsize="none"
+                    android:fontFamily="@font/num"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:text="@string/relaxed"
+                    android:textAlignment="center"
+                    android:textColor="@color/ember"
+                    android:textSize="25sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="bottom"
+                    android:progress="100"
+                    android:progressTint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:ellipsize="none"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:maxLength="10"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/gold"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_weight="5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/result"
+            app:layout_constraintVertical_bias="0.9">
+
+            <include
+                android:id="@+id/key_pad"
+                layout="@layout/key_pad" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:layout_constraintTop_toBottomOf="@+id/key_pad" />
+
+    </LinearLayout>
+
+</layout>
