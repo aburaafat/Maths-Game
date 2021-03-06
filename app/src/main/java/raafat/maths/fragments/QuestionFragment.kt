@@ -41,31 +41,34 @@ class QuestionFragment : Fragment() {
         val typeface = ResourcesCompat.getFont(requireContext(), R.font.muhammadi)
         animationText.typeface = typeface
 
+        // Timer countdown
+        val timer = object : CountDownTimer(20000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.countdown.text = (millisUntilFinished / 1000).toString()
+                binding.progressBar.progress = (millisUntilFinished /1000).toInt() * 5
+            }
+
+            override fun onFinish() {
+                binding.countdown.text = "0"
+                binding.progressBar.progress = 0
+                Snackbar.make(
+                    binding.linearLayout,
+                    R.string.time_up,
+                    Snackbar.LENGTH_INDEFINITE
+                )
+                    .setAction(R.string.new_game) {
+                        // Responds to click on the action
+                    }
+                    .show()
+            }
+        }
+
         // Question is visible after few seconds
+        // timer starts
         val question: TextView = binding.question
         Handler().postDelayed({
             question.visibility = View.VISIBLE
-
-            object : CountDownTimer(20000, 1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    binding.countdown.text = (millisUntilFinished / 1000).toString()
-                    binding.progressBar.progress = (millisUntilFinished /1000).toInt() * 5
-                }
-
-                override fun onFinish() {
-                    binding.countdown.text = "0"
-                    binding.progressBar.progress = 0
-                    Snackbar.make(
-                        binding.linearLayout,
-                        R.string.wrong_label,
-                        Snackbar.LENGTH_INDEFINITE
-                    )
-                        .setAction(R.string.new_game) {
-                            // Responds to click on the action
-                        }
-                        .show()
-                }
-            }.start()
+            timer.start()
 
         }, 7000)
 
@@ -121,6 +124,7 @@ class QuestionFragment : Fragment() {
         }
 
         binding.keyPad.ok.setOnClickListener {
+            timer.cancel()
             if (binding.answer.text.isNotEmpty()) {
 
                 val estimated = binding.answer.text.toString()

@@ -8,8 +8,9 @@
     <string name="relaxed">20 s</string>
     <string name="hard">15 s</string>
     <string name="prob1">500 / 500 + 500 × 400 + 100</string>
-    <string name="correct_label">Correct ✔</string>
+    <string name="correct_label">Correct 🎊</string>
     <string name="play_again">Play Again</string>
     <string name="wrong_label">Oops ❌</string>
     <string name="new_game">New Game</string>
+    <string name="time_up">Time\'s up ❗</string>
 </resources>
